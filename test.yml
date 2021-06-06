@@ -17,5 +17,4 @@
           - /var/lib/jenkins/
         patterns:
           - arch
-          - arch_sync
-        recurse: yes
+        
