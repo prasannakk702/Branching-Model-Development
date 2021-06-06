@@ -1,0 +1,21 @@
+---
+- name: Recursively find /var/lib/jenkins/arch
+  hosts: all
+  tasks:
+    - name: get service facts
+      service_facts:
+ 
+    - name: check if jenkins is running
+      fail:
+       msg: Jenkins is notinstalled It should have been there!
+      when: ansible_facts.services["jenkins.service"] is not defined
+     
+    - name: find something
+      find:
+        file_type: directory
+        path:
+          - /var/lib/jenkins/
+        patterns:
+          - arch
+          - arch_sync
+        recurse: yes
